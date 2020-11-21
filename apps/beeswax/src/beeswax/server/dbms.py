@@ -362,7 +362,7 @@ class HiveServer2Dbms(object):
   def get_tables_meta(self, database='default', table_names='*', table_types=None):
     database = database.lower() # Impala is case sensitive
 
-    if self.server_name == 'beeswax':
+    if self.server_name in ('beeswax', 'sparksql'):
       identifier = self.to_matching_wildcard(table_names)
     else:
       identifier = None
@@ -375,7 +375,7 @@ class HiveServer2Dbms(object):
   def get_tables(self, database='default', table_names='*', table_types=None):
     database = database.lower() # Impala is case sensitive
 
-    if self.server_name == 'beeswax':
+    if self.server_name in ('beeswax', 'sparksql'):
       identifier = self.to_matching_wildcard(table_names)
     else:
       identifier = None
